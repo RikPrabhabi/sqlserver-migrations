@@ -2,5 +2,5 @@
 AS
 BEGIN
 
-	SELECT ID, Name, Email, PhoneNumber FROM Forns;
+	SELECT ID, Name, Email FROM Forns;
 END;
