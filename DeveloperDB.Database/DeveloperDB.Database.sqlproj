@@ -74,5 +74,6 @@
     <Build Include="dbo\Views\vw_ActiveCustomers.sql" />
     <Build Include="dbo\Functions\fn_GetFullName.sql" />
     <Build Include="dbo\Stored Procedures\usp_GetCustomerByID.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetCustomer.sql" />
   </ItemGroup>
 </Project>

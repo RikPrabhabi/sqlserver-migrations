@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE sp_GetCustomer
+AS
+BEGIN
+
+	SELECT * FROM Customers;
+END;
