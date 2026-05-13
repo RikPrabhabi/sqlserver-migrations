@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE sp_GetUsers
+AS
+BEGIN
+
+	SELECT * FROM Users;
+END;
