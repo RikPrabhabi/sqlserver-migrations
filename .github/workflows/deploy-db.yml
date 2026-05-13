@@ -1,0 +1,57 @@
+name: Deploy SQL Project to DeploymentDB
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find MSBuild
+        shell: powershell
+        run: |
+          $msbuild = & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" `
+            -latest `
+            -requires Microsoft.Component.MSBuild `
+            -find MSBuild\**\Bin\MSBuild.exe
+
+          if (-not $msbuild) {
+            throw "MSBuild not found"
+          }
+
+          echo "MSBUILD_PATH=$msbuild" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Host "MSBuild found at $msbuild"
+
+      - name: Build SQL Database Project
+        shell: powershell
+        run: |
+          & "$env:MSBUILD_PATH" "DeveloperDB.Database\DeveloperDB.Database.sqlproj" /p:Configuration=Release
+
+      - name: Find SqlPackage
+        shell: powershell
+        run: |
+          $sqlpackage = Get-ChildItem "C:\Program Files\Microsoft SQL Server" -Recurse -Filter sqlpackage.exe -ErrorAction SilentlyContinue |
+            Select-Object -First 1 -ExpandProperty FullName
+
+          if (-not $sqlpackage) {
+            throw "sqlpackage.exe not found. Install SqlPackage or SSDT."
+          }
+
+          echo "SQLPACKAGE_PATH=$sqlpackage" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Host "SqlPackage found at $sqlpackage"
+
+      - name: Deploy DACPAC to DeploymentDB
+        shell: powershell
+        run: |
+          & "$env:SQLPACKAGE_PATH" `
+            /Action:Publish `
+            /SourceFile:"DeveloperDB.Database\bin\Release\DeveloperDB.Database.dacpac" `
+            /TargetConnectionString:"Server=(localdb)\Local;Database=DeploymentDB;Trusted_Connection=True;TrustServerCertificate=True;" `
+            /p:BlockOnPossibleDataLoss=False
