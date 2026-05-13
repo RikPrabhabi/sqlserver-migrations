@@ -68,7 +68,6 @@
     <Build Include="dbo\Tables\Users.sql" />
     <Build Include="dbo\Tables\Users_A.sql" />
     <Build Include="dbo\Tables\Forms.sql" />
-    <Build Include="dbo\Tables\DatabaseDeploymentHistory.sql" />
     <Build Include="dbo\Tables\Customers.sql" />
     <Build Include="dbo\Tables\ProductDetails.sql" />
     <Build Include="dbo\Views\vw_ActiveCustomers.sql" />

@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE sp_GetUsers
+﻿CREATE PROCEDURE sp_GetForms
 AS
 BEGIN
 
-	SELECT * FROM Users;
+	SELECT ID, Name, Email, PhoneNumber FROM Forns;
 END;
