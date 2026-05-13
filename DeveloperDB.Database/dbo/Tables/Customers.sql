@@ -5,6 +5,7 @@
     [PhoneNumber] INT NULL, 
     [CreatedOn] DATETIME       DEFAULT (getdate()) NOT NULL,
     [Active] INT NULL DEFAULT 1, 
+    [OrderByNo] INT NULL DEFAULT 1, 
     CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
