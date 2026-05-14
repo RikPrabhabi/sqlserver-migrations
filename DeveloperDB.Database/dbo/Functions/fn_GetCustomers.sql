@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION dbo.fn_GetCustomers()
+﻿CREATE FUNCTION [dbo].[fn_GetCustomers]()
 RETURNS TABLE
 AS
 RETURN
@@ -8,8 +8,6 @@ RETURN
         FullName,
         Email,
         PhoneNumber,
-        CreatedOn,
-        Active,
-        OrderByNo
+        CreatedOn
     FROM dbo.Customers
 );

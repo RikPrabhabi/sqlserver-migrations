@@ -1,8 +1,8 @@
-﻿CREATE   VIEW dbo.vw_ActiveCustomers
+﻿
+CREATE   VIEW [dbo].[vw_ActiveCustomers]
 AS
     SELECT 
         ID,
-        FullName,
-        Email
+        FullName
     FROM dbo.Customers
     WHERE Email IS NOT NULL;

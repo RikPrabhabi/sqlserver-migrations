@@ -1,11 +1,9 @@
-﻿CREATE VIEW dbo.vw_GetCustomers
+﻿
+CREATE VIEW [dbo].[vw_GetCustomers]
 AS
 SELECT
     ID,
     FullName,
     Email,
-    PhoneNumber,
-    CreatedOn,
-    Active,
-    OrderByNo
+    PhoneNumber
 FROM dbo.Customers;

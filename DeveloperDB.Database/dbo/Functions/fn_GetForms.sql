@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION dbo.fn_GetForms()
+﻿CREATE FUNCTION [dbo].[fn_GetForms]()
 RETURNS TABLE
 AS
 RETURN
@@ -6,7 +6,6 @@ RETURN
     SELECT
         ID,
         Name,
-        Email,
-        PhoneNumber
+        Email
     FROM dbo.Forms
 );
