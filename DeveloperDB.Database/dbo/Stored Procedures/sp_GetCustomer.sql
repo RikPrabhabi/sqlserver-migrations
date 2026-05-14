@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE sp_GetCustomer
+﻿CREATE PROCEDURE [dbo].[sp_GetCustomer]
 AS
 BEGIN
 
-	SELECT * FROM Customers;
+	SELECT ID, Email, FullName, PhoneNumber FROM Customers;
 END;
