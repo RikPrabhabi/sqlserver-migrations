@@ -79,5 +79,6 @@
     <Build Include="dbo\Views\vw_GetCustomers.sql" />
     <Build Include="dbo\Functions\fn_GetForms.sql" />
     <Build Include="dbo\Functions\fn_GetCustomers.sql" />
+    <Build Include="dbo\Tables\Suppliers.sql" />
   </ItemGroup>
 </Project>
